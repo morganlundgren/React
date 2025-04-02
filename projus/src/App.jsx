@@ -9,6 +9,7 @@ import Kontakt from "./pages/Kontakt";
 import Medlemskap from "./pages/Medlemskap";
 import Historia from "./pages/Historia";
 import Banguide from "./pages/Banguide";
+import Tavling from "./pages/Tavling";
 
 function App() {
 
@@ -22,6 +23,7 @@ function App() {
         	<Route path ="/Medlemskap" element ={<Medlemskap />} />
 			<Route path ="/Historia" element ={<Historia />} />
 			<Route path ="/Banguide" element ={<Banguide />} />
+			<Route path ="/Tavling" element ={<Tavling />} />
 
       	</Routes>
 		<Carousel/>

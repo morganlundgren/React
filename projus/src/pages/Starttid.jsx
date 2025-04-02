@@ -1,14 +1,17 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { generateTimeSlots } from "../utils/generateTimeSlots"; // 🔥 Importera funktionen
+import { generateTimeSlots } from "../utils/generateTimeSlots";
 
-function Starttid() {
-  const [selectedDate, setSelectedDate] = useState("");
+function Starttid({ initialDate, onTimeSlotSelect }) {
+  
+  const [selectedDate, setSelectedDate] = useState(initialDate || "");
   const [timeSlots, setTimeSlots] = useState([]);
 
+  
   const handleDateChange = (event) => {
-    setSelectedDate(event.target.value);
-    setTimeSlots(generateTimeSlots()); // 🔥 Använder den externa funktionen
+    const newDate = event.target.value;
+    setSelectedDate(newDate);
+    setTimeSlots(generateTimeSlots(newDate)); 
   };
 
   return (
@@ -36,21 +39,29 @@ function Starttid() {
         <div className="container">
           <h1>Boka starttid</h1>
           <h2>Välj ett datum</h2>
-          <input type="date" id="datePicker" onChange={handleDateChange} />
+          <input
+            type="date"
+            id="datePicker"
+            value={selectedDate}
+            onChange={handleDateChange}
+          />
 
           <h3>Lediga tider:</h3>
           <div className="times">
             {timeSlots.length > 0 &&
               timeSlots.map((time, index) => (
-                <div key={index} className="time-slot" onClick={() => alert(`Du valde ${time}`)}>
+                <div
+                  key={index}
+                  className="time-slot"
+                  onClick={() => onTimeSlotSelect ? onTimeSlotSelect(time) : alert(`Du valde ${time}`)}
+                >
                   {time}
                 </div>
-              ))
-            }
+              ))}
           </div>
         </div>
 
-        {/* Bokningsinformation centrerad inom container */}
+        {/* Bokningsinformation */}
         <div className="container bokning-inf">
           <h2>Greenfeeavgifter 2025</h2>
           <p>

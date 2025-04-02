@@ -30,12 +30,12 @@ class Home extends React.Component {
 			  <div className="golf-item">
 				<img src="../src/img/img/golfgubbe.png" className="golf-icon" alt="Ikon av en golfspelare" />
 				<h2>Boka starttid</h2>
-				<Link to="../html/starttid.html">Se lediga tider och boka →</Link>
+				<Link to="/Starttid">Se lediga tider och boka →</Link>
 			  </div>
 			  <div className="golf-item">
 				<img src="../src/img/img/golfsymbol.png" className="golf-icon" alt="Ikon på en krans" />
 				<h2>Tävlingskalender</h2>
-				<Link to="../html/tävling.html">Se tävlingskalendern →</Link>
+				<Link to="/Tavling">Se tävlingskalendern →</Link>
 			  </div>
 			</div>
   
